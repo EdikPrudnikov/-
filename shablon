@@ -1,0 +1,50 @@
+from ezodf import *
+import aspose.words as aw
+
+names = open("name.txt", 'r')
+
+doc = opendoc("input.odt")
+
+n = int(names.readline())
+
+for i in range(n):
+
+    var = names.readline()
+    doc.body[7]['A9'].set_value(var)
+
+
+    var = names.readline()
+    doc.body[25].text = var
+
+
+    var = names.readline()
+    doc.body[29]['A1'].set_value(var)
+
+    var = names.readline()
+    doc.body[29]['C1'].set_value(var)
+
+    var = names.readline()
+    doc.body[29]['E1'].set_value(var)
+
+
+
+    var = names.readline()
+    doc.body[32].text = var
+
+
+    var = names.readline()
+    doc.body[35]['C1'].set_value(var)
+
+    var = names.readline()
+    doc.body[39]['A1'].set_value(var)
+
+    var = names.readline()
+    doc.body[39]['C1'].set_value(var)
+
+    var = names.readline()
+    doc.body[43]['C1'].set_value(var)
+
+    doc.saveas("output" + str(i) + ".odt")
+
+    t = aw.Document("output" + str(i) + ".odt")
+    t.save("output" + str(i) + ".pdf")
